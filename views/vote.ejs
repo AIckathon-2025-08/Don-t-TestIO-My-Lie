@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vote - Don’t TestIO My Lie</title>
+    <link rel="stylesheet" href="/public/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Vote</h1>
+      <nav>
+        <a href="/admin">Admin</a>
+        <a href="/results">Results</a>
+      </nav>
+    </header>
+
+    <% if (!round) { %>
+      <section class="card">
+        <p>No active round yet. Please wait for the admin to start one.</p>
+      </section>
+    <% } else { %>
+      <section class="card">
+        <div class="candidate-center">
+          <% if (round.photo_path) { %>
+            <img src="<%= round.photo_path %>" alt="candidate" class="candidate lg" />
+          <% } %>
+          <h2 style="margin-top:12px;"><%= round.candidate_name %></h2>
+        </div>
+
+        <div class="grid-3">
+          <% for (let i=0;i<3;i++){ %>
+            <div class="statement">
+              <p class="statement-text"><%= round.statements[i] %></p>
+              <form action="/vote" method="post" class="vote-buttons centered">
+                <input type="hidden" name="idx" value="<%= i %>" />
+                <button name="choice" value="truth" type="submit" class="truth">Truth</button>
+                <button name="choice" value="lie" type="submit" class="lie">Lie</button>
+              </form>
+            </div>
+          <% } %>
+        </div>
+      </section>
+
+
+    <% } %>
+
+    <footer>
+      <p>Don’t TestIO My Lie</p>
+    </footer>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/client.js"></script>
+  </body>
+  </html>

@@ -1,0 +1,23 @@
+{
+  "name": "dont-testio-my-lie",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "postinstall": "mkdir -p uploads"
+  },
+  "dependencies": {
+    "better-sqlite3": "9.4.3",
+    "cookie-parser": "1.4.6",
+    "ejs": "3.1.10",
+    "express": "4.19.2",
+    "multer": "1.4.5-lts.1",
+    "nanoid": "5.0.7",
+    "socket.io": "4.7.5"
+  },
+  "devDependencies": {
+    "nodemon": "3.1.0"
+  }
+}

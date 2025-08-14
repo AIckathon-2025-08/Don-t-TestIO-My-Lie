@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin - Don’t TestIO My Lie</title>
+    <link rel="stylesheet" href="/public/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Admin</h1>
+      <nav>
+        <a href="/vote">Vote</a>
+        <a href="/results">Results</a>
+      </nav>
+    </header>
+
+    <section class="card">
+      <h2>Start new round</h2>
+      <form action="/admin/start" method="post" enctype="multipart/form-data">
+        <label>
+          Candidate name
+          <input type="text" name="candidateName" required />
+        </label>
+        <label>
+          Statement #1
+          <textarea name="statement1" rows="2" required></textarea>
+        </label>
+        <label>
+          Statement #2
+          <textarea name="statement2" rows="2" required></textarea>
+        </label>
+        <label>
+          Statement #3
+          <textarea name="statement3" rows="2" required></textarea>
+        </label>
+        <label>
+          Candidate photo (optional)
+          <input type="file" name="photo" accept="image/*" />
+        </label>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <button type="submit">Start</button>
+        </div>
+      </form>
+      <form action="/admin/end" method="post" style="margin-top:12px;">
+        <button type="submit" class="danger">End active round</button>
+      </form>
+    </section>
+
+    <% if (round) { %>
+      <section class="card">
+        <h2>Active round</h2>
+        <p><strong><%= round.candidate_name %></strong></p>
+        <ol>
+          <li><%= round.statements[0] %></li>
+          <li><%= round.statements[1] %></li>
+          <li><%= round.statements[2] %></li>
+        </ol>
+        <% if (round.photo_path) { %>
+          <img src="<%= round.photo_path %>" alt="candidate" class="candidate" />
+        <% } %>
+      </section>
+    <% } %>
+
+    <footer>
+      <p>Don’t TestIO My Lie</p>
+    </footer>
+    <script src="/public/client.js"></script>
+  </body>
+  </html>
