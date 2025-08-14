@@ -1,38 +1,59 @@
-:root{ --bg:#0f1222; --card:#171a2f; --text:#e8e9f1; --muted:#a8acc3; --accent:#7c9cff; --truth:#3ba56f; --lie:#d06565 }
+:root{ --bg-start:#0b1029; --bg-mid:#3a1d6e; --bg-end:#ff7eb3; --card:rgba(24,28,60,0.7); --text:#f5f7ff; --muted:#c6c9e6; --accent:#ffd76a; --truth:#37d39b; --lie:#ff7a7a }
+html{ min-height:100%; background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 55%, var(--bg-end) 110%) fixed }
 *{ box-sizing: border-box }
-body{ margin:0; font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu; background:var(--bg); color:var(--text) }
+body{ margin:0; font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu; color:var(--text); background: transparent }
 header{ display:flex; align-items:center; justify-content:space-between; padding:16px 24px; border-bottom:1px solid #23264a }
 header h1{ margin:0; font-size:20px }
 nav a{ color:var(--muted); margin-left:16px; text-decoration:none }
 nav a:hover{ color:var(--text) }
-.card{ max-width:900px; margin:24px auto; background:var(--card); border:1px solid #23264a; border-radius:12px; padding:20px }
+.card{ position:relative; z-index:1; max-width:1100px; margin:24px auto; background:var(--card); border:1px solid rgba(255,255,255,0.15); border-radius:16px; padding:22px; box-shadow: 0 10px 30px rgba(0,0,0,0.25) }
 label{ display:block; margin:12px 0; color:var(--muted) }
 input[type=text], textarea{ width:100%; margin-top:6px; padding:10px 12px; border-radius:8px; border:1px solid #2a2d55; background:#10132a; color:var(--text) }
 input[type=file]{ margin-top:6px }
-button{ appearance:none; background:var(--accent); color:#0a0b18; border:none; padding:10px 16px; border-radius:10px; font-weight:700; cursor:pointer }
+button{ appearance:none; background:linear-gradient(135deg,#ffd76a,#ffb86b); color:#2b1900; border:none; padding:12px 18px; border-radius:999px; font-weight:800; cursor:pointer; box-shadow: 0 6px 18px rgba(255, 174, 0, 0.25) }
 button:hover{ filter:brightness(1.1) }
 .vote-buttons{ display:flex; gap:12px; margin-top:12px }
-.vote-buttons .truth{ background:var(--truth); color:#03150a }
-.vote-buttons .lie{ background:var(--lie) }
+.vote-buttons .truth{ background:linear-gradient(135deg,#46f0b0,#2fd1e2); color:#021b16 }
+.vote-buttons .lie{ background:linear-gradient(135deg,#ff9aa2,#ff7a7a) }
 .muted{ color:var(--muted) }
-.candidate{ width:120px; height:120px; object-fit:cover; border-radius:12px; border:1px solid #2a2d55; margin-right:16px }
+.candidate{ width:120px; height:120px; object-fit:cover; border-radius:14px; border:2px solid rgba(255,255,255,0.25); margin-right:16px; box-shadow:0 8px 16px rgba(0,0,0,0.25) }
 .candidate.lg{ width:160px; height:160px; margin-right:0 }
 .candidate-block{ display:flex; align-items:center; gap:16px }
 .candidate-center{ display:flex; flex-direction:column; align-items:center; justify-content:center }
-.results-grid{ display:flex; flex-direction:column; gap:18px }
+.results-grid{ position:relative; z-index:1; display:flex; flex-direction:column; gap:18px }
 .row{ display:flex; flex-direction:column; gap:10px }
 .caption{ color:var(--muted); margin-left:2px }
-.bar-track{ width:100%; background:#0c0f22; border:1px solid #23264a; border-radius:10px; min-height:40px; position:relative; display:flex; align-items:center }
-.bar-track.truth{ border-color:#234f3a }
-.bar-track.lie{ border-color:#4f2a2a }
-.bar{ position:absolute; left:0; top:0; bottom:0; height:100%; transition:width .25s ease; width:0; border-radius:10px }
-.bar.truth{ background:color-mix(in oklab, var(--truth) 18%, black) }
-.bar.lie{ background:color-mix(in oklab, var(--lie) 18%, black) }
+.bar-track{ width:100%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:12px; min-height:44px; position:relative; display:flex; align-items:center }
+.bar-track.truth{ border-color:rgba(55,211,155,0.45) }
+.bar-track.lie{ border-color:rgba(255,122,122,0.45) }
+.bar{ position:absolute; left:0; top:0; bottom:0; height:100%; transition:width .35s ease; width:0; border-radius:12px }
+.bar.truth{ background:linear-gradient(90deg, rgba(55,211,155,0.55), rgba(47,209,226,0.45)) }
+.bar.lie{ background:linear-gradient(90deg, rgba(255,154,162,0.55), rgba(255,122,122,0.45)) }
 .bar-label{ position:relative; z-index:1; padding:0 12px; font-weight:700 }
-footer{ text-align:center; color:var(--muted); padding:24px }
+footer{ position:relative; z-index:1; text-align:center; color:var(--muted); padding:24px }
 .grid-3{ display:grid; grid-template-columns: repeat(3, minmax(220px, 1fr)); gap:16px; margin-top:16px }
-.statement{ background:#12152a; border:1px solid #23264a; border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:10px }
+.statement{ background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:16px; display:flex; flex-direction:column; gap:12px; box-shadow:0 6px 14px rgba(0,0,0,0.2) }
 .statement-text{ margin:0; color:var(--text); text-align:center }
 .vote-grid{ display:grid; grid-template-columns: repeat(3, minmax(220px, 1fr)); gap:12px; margin-top:12px }
 .vote-buttons.centered{ justify-content:center }
 .danger{ background:#ef4444; color:white }
+
+/* Floating palms decoration */
+.palm-layer{ position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0 }
+.palm{ position:absolute; bottom:-60px; font-size:24px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.25)); animation: floatPalm var(--dur,12s) linear forwards; opacity:0.9 }
+@keyframes floatPalm{
+  0%{ transform: translateY(0) translateX(0) rotate(0deg); opacity:0 }
+  10%{ opacity:0.9 }
+  50%{ transform: translateY(-60vh) translateX(var(--drift, 40px)) rotate(10deg) }
+  100%{ transform: translateY(-110vh) translateX(calc(var(--drift, 40px) * 2)) rotate(25deg); opacity:0 }
+}
+
+/* Emoji burst */
+.burst-layer{ position:fixed; inset:0; pointer-events:none; z-index:2 }
+.particle{ position:absolute; transform: translate(-50%, -50%); animation: particleFly 1.2s ease-out forwards; font-size:22px }
+.particle[src]{ width:22px; height:22px }
+@keyframes particleFly{
+  0%{ opacity:0; transform: translate(-50%, -50%) scale(0.6) }
+  10%{ opacity:1 }
+  100%{ opacity:0; transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.1) }
+}

@@ -86,7 +86,9 @@ export function createApp(){
     services.upsertVote(round.id, voterId, statementIndex, choice);
     const results = services.getResults(round.id);
     app.locals.io.emit('vote_update', { roundId: round.id, results });
-    res.redirect('/vote');
+    const wantsJSON = (req.accepts(['json','html']) === 'json') || req.get('x-requested-with') === 'fetch' || req.body.ajax === '1';
+    if (wantsJSON) return res.json({ ok: true, results });
+    return res.redirect('/vote');
   });
 
   app.get('/results', (req, res) => {
