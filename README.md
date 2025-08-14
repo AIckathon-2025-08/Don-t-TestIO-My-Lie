@@ -2,6 +2,24 @@
 
 A lightweight, real-time “Truth or Lie” game for team intros. The admin sets a candidate with three statements. Everyone votes Truth or Lie for each statement, and results update live.
 
+## Preview
+
+### Admin page
+
+<img width="1494" height="809" alt="image" src="https://github.com/user-attachments/assets/456466b4-f1c1-4210-8983-9908c1c0ef5e" />
+
+### Vote Page
+
+<img width="1487" height="779" alt="image" src="https://github.com/user-attachments/assets/b5f41572-325f-4115-b171-448741b371e7" />
+
+### Result page
+
+<img width="1477" height="801" alt="image" src="https://github.com/user-attachments/assets/d8855ca3-8a4e-459d-a417-1714ba213001" />
+
+### Video preview
+
+https://drive.google.com/file/d/11GL1P10qOLIMl-NatzWBSUgg6BdE0qOq/view?usp=drive_link
+
 ## Features
 - Admin can start/end rounds (name, 3 statements, optional photo)
 - Voting per statement (one vote per device via cookie)
